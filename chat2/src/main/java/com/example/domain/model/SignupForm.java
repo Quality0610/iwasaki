@@ -9,15 +9,15 @@ import org.hibernate.validator.constraints.Length;
 public class SignupForm {
 
 	@NotBlank
-	@Length(min=6)
+	@Length(min = 6)
 	private String userName;
 	
 	@NotBlank
-	@Length(min=6)
+	@Length(min = 6)
 	private String password;
 	
 	@NotBlank
-	@Length(min=6)
+	@Length(min = 6)
 	private String confirmationPassword;
 	
 }
