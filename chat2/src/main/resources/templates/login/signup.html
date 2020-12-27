@@ -17,34 +17,40 @@
         </div>
         <form method="post" th:action="@{/signup}" th:object="${signupForm}">
             <table class="table table-bordered table-hover">
-                <!-- ユーザーIDの入力エリア -->
+                <!-- User Nameの入力エリア -->
                 <tr>
-                    <th class="active col-sm-3">ユーザID</th>
+                    <th class="active col-sm-3">User Name</th>
                     <td>
                         <div class="form-group">
-                            <input type="text" class="form-control"/>
+                            <input type="text" class="form-control" th:field="*{userName}"/>
                         </div>
                     </td>
                 </tr>
-                <!-- パスワードの入力エリア -->
+                <!-- Passwordの入力エリア -->
                 <tr>
-                    <th class="active">パスワード</th>
+                    <th class="active">Password</th>
                     <td>
                         <div class="form-group">
-                            <input type="password" class="form-control"/>
+                            <input type="password" class="form-control" th:field="*{password}"/>
                         </div>
                     </td>
                 </tr>
-                <!-- パスワードの入力確認エリア -->
+                <!-- Passwordの入力確認エリア -->
                 <tr>
-                    <th class="active">パスワード確認</th>
+                    <th class="active">Password確認</th>
                     <td>
                         <div class="form-group">
-                            <input type="password" class="form-control"/>
+                            <input type="password" class="form-control" th:field="*{confirmationPassword}"/>
                         </div>
                     </td>
                 </tr>
             </table>
+            <!-- エラーメッセージの一覧表示 -->
+            <ul>
+                <li th:each="error : ${#fields.detailedErrors()}">
+                    <span th:text="${error.message}">Error message</span>
+                </li>
+            </ul>
             <!-- ユーザー登録ボタン -->
             <button class="btn btn-primary" type="submit">ユーザー登録</button>
         </form>
