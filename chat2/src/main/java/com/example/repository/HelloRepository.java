@@ -1,4 +1,4 @@
-package com.example.controller;
+package com.example.repository;
 
 import java.util.Map;
 
@@ -16,15 +16,15 @@ public class HelloRepository {
 
         // SELECT文
         String query = "SELECT "
-                + " employee_id,"
-                + " employee_name,"
-                + " age "
-                + "FROM employee "
-                + "WHERE employee_id=?";
+                + " id,"
+                + " name,"
+                + " password "
+                + "FROM user "
+                + "WHERE id=?";
 
         // 検索実行
-        Map<String, Object> employee = jdbcTemplate.queryForMap(query, id);
+        Map<String, Object> user = jdbcTemplate.queryForMap(query, id);
 
-        return employee;
+        return user;
     }
 }
