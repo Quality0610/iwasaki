@@ -8,16 +8,16 @@ import org.hibernate.validator.constraints.Length;
 @Data
 public class SignupForm {
 
-	@NotBlank
-	@Length(min = 6)
+	@NotBlank(groups = ValidGroup1.class)
+	@Length(min = 6, groups = ValidGroup2.class)
 	private String userName;
 	
-	@NotBlank
-	@Length(min = 6)
+	@NotBlank(groups = ValidGroup1.class)
+	@Length(min = 6, groups = ValidGroup2.class)
 	private String password;
 	
-	@NotBlank
-	@Length(min = 6)
+	@NotBlank(groups = ValidGroup1.class)
+	@Length(min = 6, groups = ValidGroup2.class)
 	private String confirmationPassword;
 	
 }

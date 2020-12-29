@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.domain.model.GroupOrder;
 import com.example.domain.model.SignupForm;
 
 @Controller
@@ -29,7 +30,7 @@ public class SignupController {
      */
     @PostMapping("/signup")
     public String postSignUp(
-    		@ModelAttribute @Validated SignupForm form,
+    		@ModelAttribute @Validated(GroupOrder.class) SignupForm form,
     		BindingResult bindingResult,
             Model model) {
 
