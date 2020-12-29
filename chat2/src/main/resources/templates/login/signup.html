@@ -21,8 +21,13 @@
                 <tr>
                     <th class="active col-sm-3">User Name</th>
                     <td>
-                        <div class="form-group">
+                        <div class="form-group" th:classappend="${#fields.hasErrors('userName')} ? 'has-error'">
                             <input type="text" class="form-control" th:field="*{userName}"/>
+                            <span class="text-danger"
+                                th:if="${#fields.hasErrors('userName')}"
+                                th:errors="*{password}">
+                                userName error
+                            </span>
                         </div>
                     </td>
                 </tr>
@@ -30,8 +35,13 @@
                 <tr>
                     <th class="active">Password</th>
                     <td>
-                        <div class="form-group">
+                        <div class="form-group" th:classappend="${#fields.hasErrors('password')} ? 'has-error'">
                             <input type="password" class="form-control" th:field="*{password}"/>
+                            <span class="text-danger"
+                                th:if="${#fields.hasErrors('password')}"
+                                th:errors="*{password}">
+                                password error
+                            </span>
                         </div>
                     </td>
                 </tr>
@@ -39,18 +49,17 @@
                 <tr>
                     <th class="active">Password確認</th>
                     <td>
-                        <div class="form-group">
+                        <div class="form-group" th:classappend="${#fields.hasErrors('confirmationPassword')} ? 'has-error'">
                             <input type="password" class="form-control" th:field="*{confirmationPassword}"/>
+                            <span class="text-danger"
+                                th:if="${#fields.hasErrors('confirmationPassword')}"
+                                th:errors="*{confirmationPassword}">
+                                password error
+                            </span>
                         </div>
                     </td>
                 </tr>
             </table>
-            <!-- エラーメッセージの一覧表示 -->
-            <ul>
-                <li th:each="error : ${#fields.detailedErrors()}">
-                    <span th:text="${error.message}">Error message</span>
-                </li>
-            </ul>
             <!-- ユーザー登録ボタン -->
             <button class="btn btn-primary" type="submit">ユーザー登録</button>
         </form>
