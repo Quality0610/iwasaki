@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +30,12 @@ public class BbsController {
 	public String getBbs(Model model) {
 		
 		model.addAttribute("contents", "login/bbs :: bbs_contents");
+		
+        List<Bbs> bbsList = bbsService.selectAllBbs();
+
+        model.addAttribute("bbsList", bbsList);
+        
+        System.out.println("bbsList " + bbsList);
 		
 		return "login/bbsLayout";
 	}

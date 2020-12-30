@@ -10,7 +10,12 @@ public interface BbsDao {
 
 	public int insertBbs(Bbs bbs) throws DataAccessException;
 	
+	public int count() throws DataAccessException;
+	
 	public List<Bbs> selectAllBbs() throws DataAccessException;
 	
 	public int deleteBbs(int id) throws DataAccessException;
+	
+    public Bbs selectOne(int id) throws DataAccessException;
+
 }
