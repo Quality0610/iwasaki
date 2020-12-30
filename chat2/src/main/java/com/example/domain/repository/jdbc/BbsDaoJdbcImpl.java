@@ -18,7 +18,20 @@ public class BbsDaoJdbcImpl implements BbsDao {
 	
 	@Override
 	public int insertBbs(Bbs bbs) throws DataAccessException{
-		return 0;
+		
+        //１件登録
+        int rowNumber = jdbcTemplate.update("INSERT INTO bbs("
+                + " author,"
+                + " subject,"
+                + " body,"
+                + " delete_flg)"
+                + " VALUES(?, ?, ?, ?)",
+                bbs.getAuthor(),
+                bbs.getSubject(),
+                bbs.getBody(),
+                bbs.getDeleteFlag());
+
+        return rowNumber;
 	}
 
 	@Override
