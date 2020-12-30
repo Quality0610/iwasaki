@@ -70,6 +70,10 @@ public class BbsController {
         }
 
 		model.addAttribute("contents", "login/bbs :: bbs_contents");
+
+		List<Bbs> bbsList = bbsService.selectAllBbs();
+
+        model.addAttribute("bbsList", bbsList);
 		
 		return "login/bbsLayout";
 	}
