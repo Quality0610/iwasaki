@@ -19,7 +19,7 @@ public class BbsController {
 	@GetMapping("/bbs")
 	public String getBbs(Model model) {
 		
-		model.addAttribute("contents", "login/home :: home_contents");
+		model.addAttribute("contents", "login/bbs :: bbs_contents");
 		
 		return "login/bbsLayout";
 	}
