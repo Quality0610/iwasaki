@@ -8,25 +8,20 @@
     <!-- ポイント：th:fragment -->
     <div th:fragment="bbs_contents">
         <div class="page-header">
-            <h1>掲示板</h1>
+            <h1>投稿をしましょう</h1>
         </div>
-         <table class="table table-bordered table-hover table-striped">
-             <tr>
-                <th class="info col-sm-2">ID</th>
-                <th class="info col-sm-2">ユーザ名</th>
-                <th class="info col-sm-2">件名</th>
-                <th class="info col-sm-2">本文</th>
-                <th class="info col-sm-2"></th>
-            </tr>
-            <tr th:each="bbs : ${bbsList}">
-                <td th:text="${bbs.id}"></td>
-                <td th:text="${bbs.author}"></td>
-                <td th:text="${bbs.subject}"></td>
-                <td th:text="${bbs.body}"></td>
-             </tr>
-          </table>
-        
-        <hr>
+        <tr th:each="bbs : ${bbsList}">
+ 		   【ID】<td th:text="${bbs.id}"></td><br/>
+    	   【名前】<td th:text="${bbs.author}"></td><br/>
+    	   【件名】<td th:text="${bbs.subject}"></td><br/>
+    	   【本文】<td th:text="${bbs.body}"></td><br/>
+    	   <a class="btn btn-primary" action="delete" th:href="@{'/bbs' + ${bbs.id}}">
+           削除
+           </a>
+    	   <hr>
+		</tr>
+        書き込みをしましょう<br/>
+        【投稿フォーム】
         <form name="form"  method="post" action="/bbs">
 		    名前：hoge<br>
 		    件名：<input type="text" name="subject" size="60"><br>
