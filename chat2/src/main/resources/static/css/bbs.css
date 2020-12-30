@@ -1,0 +1,16 @@
+body {    
+	padding-top: 50 px; 
+}
+
+.main {
+  padding-top: 50px;
+  padding-left: 20px;
+  position: fixed;
+  display: block;
+  top: 0px;
+  bottom: 0;
+}
+
+.page-header {
+  margin-top: 0px;
+}
