@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.domain.model.Bbs;
 import com.example.domain.model.GroupOrder;
 import com.example.domain.model.SignupForm;
 import com.example.domain.model.User;
@@ -45,8 +48,33 @@ public class SignupController {
     	if(bindingResult.hasErrors()) {
     		return getSignUp(form, model);
     	}
-    	
+
+    	System.out.println("hogehogehogehogehogehogehoge");
     	System.out.println(form);
+    	System.out.println("hogehogehogehogehogehogehoge");
+    	
+    	User user = new User();
+    	
+        user.setName(form.getUserName()); //ユーザー名
+        user.setPassword(form.getPassword()); //パスワード
+        
+        model.addAttribute("user", user);
+
+        return "login/signupConfirm";
+    }
+    
+    /**
+     * ユーザー登録確認画面のPOSTメソッド用処理.
+     */
+    @PostMapping("/signupCommit")
+    public String postSignUpCommit(
+    		@ModelAttribute @Validated(GroupOrder.class) SignupForm form,
+    		BindingResult bindingResult,
+            Model model) {
+    	
+    	System.out.println("fugafugafugafugafugafugafuga");
+    	System.out.println(form);
+    	System.out.println("fugafugafugafugafugafugafuga");
     	
     	User user = new User();
     	
@@ -64,7 +92,8 @@ public class SignupController {
             System.out.println("insert失敗");
         }
     	
-        // login.htmlにリダイレクト
-        return "redirect:/login";	
+        return "redirect:/bbs";
+        
     }
+    
 }
