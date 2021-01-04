@@ -29,9 +29,19 @@ public class SecurityCinfig extends WebSecurityConfigurerAdapter  {
     // ユーザーIDとパスワードを取得するSQL文
     private static final String USER_SQL = 
     		"SELECT"
-            + "    id,"
             + "    name,"
-            + "    password"
+            + "    password,"
+            + "    true"
+            + " FROM"
+            + "    user"
+            + " WHERE"
+            + "    name = ?";
+    
+
+    private static final String ROLE_SQL = 
+    		"SELECT"
+            + "    name,"
+            + "    true"
             + " FROM"
             + "    user"
             + " WHERE"
@@ -65,7 +75,7 @@ public class SecurityCinfig extends WebSecurityConfigurerAdapter  {
                .failureUrl("/login") //ログイン失敗時の遷移先
                .usernameParameter("userName") //ログインページのユーザーネーム
                .passwordParameter("password") //ログインページのパスワード
-               .defaultSuccessUrl("/login", true); //ログイン成功後の遷移先
+               .defaultSuccessUrl("/bbs", true); //ログイン成功後の遷移先
        
        //ログアウト処理
        http
@@ -84,6 +94,7 @@ public class SecurityCinfig extends WebSecurityConfigurerAdapter  {
        auth.jdbcAuthentication()
                .dataSource(dataSource)   
                .usersByUsernameQuery(USER_SQL)
+               .authoritiesByUsernameQuery(ROLE_SQL)
                .passwordEncoder(passwordEncoder());
    }
 }
