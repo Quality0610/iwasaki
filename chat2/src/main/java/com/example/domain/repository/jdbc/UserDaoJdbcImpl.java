@@ -3,6 +3,7 @@ package com.example.domain.repository.jdbc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import com.example.domain.model.User;
@@ -14,15 +15,22 @@ public class UserDaoJdbcImpl implements UserDao{
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 	
+	@Autowired
+	PasswordEncoder passwordEncoder;
+	
 	@Override
 	public int insertUser(User user) throws DataAccessException{
 		
-        //１件登録
-        int rowNumber = jdbcTemplate.update("INSERT INTO user(name,"
+		String password = passwordEncoder.encode(user.getPassword());
+		
+		String sql = "INSERT INTO user(name,"
                 + " password)"
-                + " VALUES(?, ?)",
+                + " VALUES(?, ?)";
+		
+        //１件登録
+        int rowNumber = jdbcTemplate.update(sql,
                 user.getId(),
-                user.getPassword());
+                password);
 
         return rowNumber;
 	}
