@@ -3,6 +3,8 @@ package com.example.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,6 +31,12 @@ public class BbsController {
 	@GetMapping("/bbs")
 	public String getBbs(Model model) {
 		
+		// loginUser名の取得
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String loginName = auth.getName();
+        model.addAttribute("loginName", loginName);
+
+		
 		model.addAttribute("contents", "login/bbs :: bbs_contents");
 		
         List<Bbs> bbsList = bbsService.selectAllBbs();
@@ -52,9 +60,14 @@ public class BbsController {
     	
     	System.out.println(form);
     	
+		// loginUser名の取得
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String loginName = auth.getName();
+        model.addAttribute("loginName", loginName);
+    	
     	Bbs bbs = new Bbs();
     	
-    	bbs.setAuthor(form.getAuthor()); 
+    	bbs.setAuthor(loginName); 
     	bbs.setSubject(form.getSubject());
     	bbs.setBody(form.getBody());
     	bbs.setDeleteFlag(0);
