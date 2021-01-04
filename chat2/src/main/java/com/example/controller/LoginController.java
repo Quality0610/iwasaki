@@ -23,6 +23,7 @@ public class LoginController {
     @PostMapping("/login")
     public String postLogin(Model model) {
 
+    	System.out.println("unko");
         return "redirect:/bbs";
     }
 }
