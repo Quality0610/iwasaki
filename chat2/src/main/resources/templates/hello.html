@@ -7,8 +7,13 @@
 <body>
     <h1>Hello World</h1>
     <form method="post" action="/hello">
-        <!-- th:value使用 -->
+        <!-- ポイント：th:value -->
         好きな文字を入力：<input type="text" name="text1" th:value="${text1_value}" />
+        <input type="submit" value="クリック" />
+    </form>
+    <br />
+    <form method="post" action="/hello/db">
+		ユーザIDを入力：<input type="text" name="text2" th:value="${text2_value}" />
         <input type="submit" value="クリック" />
     </form>
 <body>
