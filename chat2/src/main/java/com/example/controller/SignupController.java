@@ -88,7 +88,7 @@ public class SignupController {
             System.out.println("insert失敗");
         }
     	
-        return "redirect:/bbs";
+        return "redirect:/login";
         
     }
     

@@ -23,13 +23,15 @@ public class UserDaoJdbcImpl implements UserDao{
 		
 		String password = passwordEncoder.encode(user.getPassword());
 		
+		System.out.println(user.getName());
+		
 		String sql = "INSERT INTO user(name,"
                 + " password)"
                 + " VALUES(?, ?)";
 		
         //１件登録
         int rowNumber = jdbcTemplate.update(sql,
-                user.getId(),
+                user.getName(),
                 password);
 
         return rowNumber;
