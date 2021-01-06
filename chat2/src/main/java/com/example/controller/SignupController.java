@@ -43,15 +43,11 @@ public class SignupController {
     		BindingResult bindingResult,
             Model model) {
 
-    	//TO DO passwordの確認用サービスを読んでチェックする    	
-    	
-    	if(bindingResult.hasErrors()) {
+    	// passwordと確認用passwordが違う場合考慮
+    	if(bindingResult.hasErrors() ||
+    			!form.getPassword().equals(form.getConfirmationPassword())) {
     		return getSignUp(form, model);
     	}
-
-    	System.out.println("hogehogehogehogehogehogehoge");
-    	System.out.println(form);
-    	System.out.println("hogehogehogehogehogehogehoge");
     	
     	User user = new User();
     	
