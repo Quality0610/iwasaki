@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.domain.model.Bbs;
+import com.example.domain.model.BbsForm;
 import com.example.domain.repository.BbsDao;
 
 @Service
@@ -34,4 +35,19 @@ public class BbsService {
 	public List<Bbs> selectAllBbs(){
 		return bbsDao.selectAllBbs();
 	}
+	
+	public boolean deleteOne(int formId) {
+		
+		boolean result = false;
+		
+		int rowNumber = bbsDao.deleteBbs(formId);
+		
+		if(rowNumber > 0) {
+			result = true;
+		}
+		
+		return result;
+	}
+	
+	
 }

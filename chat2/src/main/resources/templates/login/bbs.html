@@ -15,7 +15,7 @@
     	   【名前】<td th:text="${bbs.author}"></td><br/>
     	   【件名】<td th:text="${bbs.subject}"></td><br/>
     	   【本文】<td th:text="${bbs.body}"></td><br/>
-    	   <a class="btn btn-primary" action="delete" th:href="@{'/bbs' + ${bbs.id}}"  
+    	   <a class="btn btn-primary" th:href="@{'/bbs/' + ${bbs.id}}"  
     	   th:if="${bbs.author} == ${loginName}">
            	削除
            </a>

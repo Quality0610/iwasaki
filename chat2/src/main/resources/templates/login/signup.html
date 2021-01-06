@@ -25,7 +25,7 @@
                             <input type="text" class="form-control" th:field="*{userName}"/>
                             <span class="text-danger"
                                 th:if="${#fields.hasErrors('userName')}"
-                                th:errors="*{password}">
+                                th:errors="*{userName}">
                                 userName error
                             </span>
                         </div>

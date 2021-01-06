@@ -70,7 +70,10 @@ public class BbsDaoJdbcImpl implements BbsDao {
 	
 	@Override
 	public int deleteBbs(int id) throws DataAccessException{
-		return 0;
+    	
+        int rowNumber = jdbcTemplate.update("DELETE FROM bbs WHERE id = ?", id);
+
+        return rowNumber;
 	}
 	
 	@Override

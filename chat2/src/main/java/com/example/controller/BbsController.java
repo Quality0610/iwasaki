@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.domain.model.Bbs;
@@ -43,6 +44,7 @@ public class BbsController {
 
         model.addAttribute("bbsList", bbsList);
         
+        System.out.println("unkouuuuu");
         System.out.println("bbsList " + bbsList);
 		
 		return "login/bbsLayout";
@@ -96,5 +98,22 @@ public class BbsController {
 		return "redirect:/login";
 	}
 	
+    @GetMapping("/bbs/{id:.+}")
+    public String delete(
+            Model model,
+            @PathVariable("id") Integer id) {
+
+        System.out.println("削除ボタンの処理");
+
+        boolean result = bbsService.deleteOne(id);
+
+        if (result == true) {
+            model.addAttribute("result", "削除成功");
+        } else {
+            model.addAttribute("result", "削除失敗");
+        }
+
+        return getBbs(model);
+    }	
 	
 }
