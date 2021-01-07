@@ -70,7 +70,7 @@ public class SignupController {
     	
 
     	System.out.println(form);
-    	System.out.println("fugafugafugafugafugafugafuga");
+
     	
     	User user = new User();
     	
