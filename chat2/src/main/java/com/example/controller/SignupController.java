@@ -68,7 +68,7 @@ public class SignupController {
     		BindingResult bindingResult,
             Model model) {
     	
-    	System.out.println("fugafugafugafugafugafugafuga");
+
     	System.out.println(form);
     	System.out.println("fugafugafugafugafugafugafuga");
     	
